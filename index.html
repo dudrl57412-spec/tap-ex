@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tap 기능</title>
+    <style>
+      .tab-content {
+        display: none;
+      }
+      .tab-btn {
+        /* border: none; */
+        border: 1px solid #333;
+      }
+      .tab-btn.active {
+        background-color: #333;
+        color: #fff;
+        /* border: none; */
+      }
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab-menu">
+      <button class="tab-btn active">공지</button>
+      <button class="tab-btn">리뷰</button>
+      <button class="tab-btn">문의</button>
+    </div>
+    <!-- 탭 내용 -->
+    <div class="tab-content active">공지 내용</div>
+    <div class="tab-content">리뷰 내용</div>
+    <div class="tab-content">문의 내용</div>
+    <script>
+      const btns = document.querySelectorAll(".tab-btn");
+      const contents = document.querySelectorAll(".tab-content");
+      btns.forEach((btn, index) => {
+        // console.log(btn, index);
+        btn.addEventListener("click", () => {
+          // console.log("click");
+          //1.모든버튼 off
+          btns.forEach((b) => b.classList.remove("active"));
+          //2.모든내용 off
+          contents.forEach((c) => c.classList.remove("active"));
+          //3.클릭한 버튼을 on
+          btn.classList.add("active");
+          //4.같은번호 내용을 on
+          contents[index].classList.add("active");
+          //   console.log(contents[index]);
+        });
+      });
+    </script>
+  </body>
+</html>
